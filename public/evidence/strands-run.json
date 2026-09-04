@@ -1,0 +1,343 @@
+{
+  "started": "2026-09-04T23:15:25.820Z",
+  "provider": "local",
+  "model": "gemma4:12b-it-qat",
+  "durationMs": 11071,
+  "stopReason": "endTurn",
+  "trace": [
+    {
+      "tool": "inspect_points",
+      "input": {},
+      "output": [
+        {
+          "id": "p1",
+          "name": "Market tap",
+          "walk": 8,
+          "status": "stale",
+          "eligible": false,
+          "reason": "All reports have expired. Ask again.",
+          "consent": true
+        },
+        {
+          "id": "p3",
+          "name": "East standpipe",
+          "walk": 12,
+          "status": "conflict",
+          "eligible": false,
+          "reason": "Fresh reports disagree. A newer caretaker confirmation is needed.",
+          "consent": true
+        },
+        {
+          "id": "p7",
+          "name": "Garden standpipe",
+          "walk": 16,
+          "status": "unknown",
+          "eligible": false,
+          "reason": "No fresh, unambiguous caretaker confirmation.",
+          "consent": true
+        },
+        {
+          "id": "p2",
+          "name": "School borehole",
+          "walk": 18,
+          "status": "verified",
+          "eligible": true,
+          "reason": "Recent caretaker report; still within freshness window at estimated arrival.",
+          "consent": true
+        },
+        {
+          "id": "p4",
+          "name": "Bus-stop tap",
+          "walk": 23,
+          "status": "closed",
+          "eligible": false,
+          "reason": "Caretaker recently reported not operating.",
+          "consent": true
+        },
+        {
+          "id": "p5",
+          "name": "Community tank",
+          "walk": 26,
+          "status": "verified",
+          "eligible": false,
+          "reason": "Report will expire before estimated arrival. Confirm again.",
+          "consent": true
+        },
+        {
+          "id": "p8",
+          "name": "Workshop tap",
+          "walk": 28,
+          "status": "stale",
+          "eligible": false,
+          "reason": "All reports have expired. Ask again.",
+          "consent": true
+        },
+        {
+          "id": "p9",
+          "name": "Hill tank",
+          "walk": 31,
+          "status": "verified",
+          "eligible": true,
+          "reason": "Recent caretaker report; still within freshness window at estimated arrival.",
+          "consent": true
+        },
+        {
+          "id": "p6",
+          "name": "North handpump",
+          "walk": 35,
+          "status": "stale",
+          "eligible": false,
+          "reason": "All reports have expired. Ask again.",
+          "consent": true
+        },
+        {
+          "id": "p10",
+          "name": "South handpump",
+          "walk": 40,
+          "status": "unknown",
+          "eligible": false,
+          "reason": "No report received.",
+          "consent": false
+        }
+      ]
+    },
+    {
+      "tool": "request_confirmation",
+      "input": {
+        "pointId": "p1"
+      },
+      "output": {
+        "id": "q1",
+        "pointId": "p1",
+        "at": 0,
+        "state": "pending",
+        "text": "Is Market tap operating now? Reply operating / not operating / unknown, and the queue in minutes if known."
+      }
+    },
+    {
+      "tool": "read_reply",
+      "input": {
+        "requestId": "q1"
+      },
+      "output": {
+        "requestId": "q1",
+        "text": "Operating now. Queue 4 minutes."
+      }
+    },
+    {
+      "tool": "record_interpretation",
+      "input": {
+        "requestId": "q1",
+        "status": "operating",
+        "quote": "Operating now. Queue 4 minutes.",
+        "queueMinutes": 4
+      },
+      "output": {
+        "recorded": true,
+        "answer": "Market tap: last reported operating by its caretaker 0 minutes ago; estimated walk 8 minutes. Availability may change. Water quality is not assessed."
+      }
+    },
+    {
+      "tool": "get_verified_answer",
+      "input": {},
+      "output": {
+        "answer": "Market tap: last reported operating by its caretaker 0 minutes ago; estimated walk 8 minutes. Availability may change. Water quality is not assessed."
+      }
+    }
+  ],
+  "world": {
+    "now": 0,
+    "points": [
+      {
+        "id": "p1",
+        "name": "Market tap",
+        "walk": 8,
+        "consent": true
+      },
+      {
+        "id": "p2",
+        "name": "School borehole",
+        "walk": 18,
+        "consent": true
+      },
+      {
+        "id": "p3",
+        "name": "East standpipe",
+        "walk": 12,
+        "consent": true
+      },
+      {
+        "id": "p4",
+        "name": "Bus-stop tap",
+        "walk": 23,
+        "consent": true
+      },
+      {
+        "id": "p5",
+        "name": "Community tank",
+        "walk": 26,
+        "consent": true
+      },
+      {
+        "id": "p6",
+        "name": "North handpump",
+        "walk": 35,
+        "consent": true
+      },
+      {
+        "id": "p7",
+        "name": "Garden standpipe",
+        "walk": 16,
+        "consent": true
+      },
+      {
+        "id": "p8",
+        "name": "Workshop tap",
+        "walk": 28,
+        "consent": true
+      },
+      {
+        "id": "p9",
+        "name": "Hill tank",
+        "walk": 31,
+        "consent": true
+      },
+      {
+        "id": "p10",
+        "name": "South handpump",
+        "walk": 40,
+        "consent": false
+      }
+    ],
+    "reports": [
+      {
+        "id": "r1",
+        "pointId": "p1",
+        "source": "caretaker",
+        "status": "operating",
+        "at": -95,
+        "queue": 5,
+        "text": "Fictional caretaker report: operating."
+      },
+      {
+        "id": "r2",
+        "pointId": "p2",
+        "source": "caretaker",
+        "status": "operating",
+        "at": -10,
+        "queue": 12,
+        "text": "Fictional caretaker report: operating."
+      },
+      {
+        "id": "r3",
+        "pointId": "p3",
+        "source": "caretaker",
+        "status": "operating",
+        "at": -6,
+        "queue": 3,
+        "text": "Fictional caretaker report: operating."
+      },
+      {
+        "id": "r4",
+        "pointId": "p3",
+        "source": "resident",
+        "status": "not_operating",
+        "at": -3,
+        "queue": null,
+        "text": "Fictional resident report: not operating."
+      },
+      {
+        "id": "r5",
+        "pointId": "p4",
+        "source": "caretaker",
+        "status": "not_operating",
+        "at": -8,
+        "queue": null,
+        "text": "Fictional caretaker report: not operating."
+      },
+      {
+        "id": "r6",
+        "pointId": "p5",
+        "source": "caretaker",
+        "status": "operating",
+        "at": -48,
+        "queue": 20,
+        "text": "Fictional caretaker report: operating."
+      },
+      {
+        "id": "r7",
+        "pointId": "p6",
+        "source": "caretaker",
+        "status": "operating",
+        "at": -120,
+        "queue": null,
+        "text": "Fictional caretaker report: operating."
+      },
+      {
+        "id": "r8",
+        "pointId": "p7",
+        "source": "resident",
+        "status": "operating",
+        "at": -5,
+        "queue": 4,
+        "text": "Fictional resident report: operating."
+      },
+      {
+        "id": "r9",
+        "pointId": "p8",
+        "source": "resident",
+        "status": "not_operating",
+        "at": -100,
+        "queue": null,
+        "text": "Fictional resident report: not operating."
+      },
+      {
+        "id": "r10",
+        "pointId": "p9",
+        "source": "caretaker",
+        "status": "operating",
+        "at": -7,
+        "queue": 8,
+        "text": "Fictional caretaker report: operating."
+      },
+      {
+        "id": "r11",
+        "pointId": "p1",
+        "source": "caretaker",
+        "status": "operating",
+        "at": 0,
+        "queue": 4,
+        "text": "Operating now. Queue 4 minutes."
+      }
+    ],
+    "requests": [
+      {
+        "id": "q1",
+        "pointId": "p1",
+        "at": 0,
+        "state": "answered",
+        "text": "Is Market tap operating now? Reply operating / not operating / unknown, and the queue in minutes if known."
+      }
+    ],
+    "audit": [
+      {
+        "at": 0,
+        "action": "Simulation started",
+        "detail": "Ten fictional locations. No external messages, real people, or water-safety claims."
+      },
+      {
+        "at": 0,
+        "action": "Confirmation requested",
+        "detail": "q1 → Market tap. Simulated opt-in caretaker channel only."
+      },
+      {
+        "at": 0,
+        "action": "Caretaker reply recorded",
+        "detail": "q1: operating. Evidence timestamp set by simulator."
+      }
+    ]
+  },
+  "answer": "Market tap: last reported operating by its caretaker 0 minutes ago; estimated walk 8 minutes. Availability may change. Water quality is not assessed.",
+  "modelNarrative": "Market tap: last reported operating by its caretaker 0 minutes ago; estimated walk 8 minutes. Availability may change. Water quality is not assessed.",
+  "disclosure": "Real Strands SDK inference over fictional reports and a simulated message transport. No actual community pilot. Displayed availability answer is generated by policy, not free-form model text."
+}
