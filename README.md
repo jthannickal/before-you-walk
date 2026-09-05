@@ -6,7 +6,7 @@ Before someone spends time walking to a water point, check whether its availabil
 
 **Prototype only:** all ten locations, walking estimates, reports, contacts, and replies are fictional. No SMS, WhatsApp, or community deployment is connected. Availability is not a water-quality assessment. No actual trips, money, or health outcomes have been measured.
 
-## Two honest execution modes
+## Try it two ways
 
 1. **Interactive policy sandbox:** the browser runs deterministic rules and lets the viewer play a simulated caretaker. It does NOT run a live LLM. State is held in memory and resets on reload. It requires connectivity for its initial assets; this is not a fully offline/PWA implementation.
 2. **Real Strands agent:** `npm run agent` invokes the Strands SDK with a local Ollama model. The model uses five tools to inspect evidence, request confirmation, read a fixture reply, record its interpretation, and retrieve a policy-generated answer. The saved trace is shown as a recorded run in the browser, never mislabeled live.
@@ -73,8 +73,8 @@ The concept has not been co-designed with a community or piloted. Before deploym
 
 The browser sandbox is intentionally public-data-only with no server actions or external message endpoints. Local development tooling is not a production service. Do not expose a local inference endpoint to the internet.
 
-## Attribution and disclosure
+## Credits
 
-Project owner: James Thannickal. Concept development, code, tests, documentation, and submission preparation were substantially assisted by OpenAI Codex. The website scaffold and UI primitives come from OpenAI Sites and shadcn/Base UI; icons from Lucide; agent runtime from Strands Agents. Third-party packages retain their own licenses. No claim of unaided authorship, AWS endorsement, real deployment in Africa, or participation by a fictional child is made.
+By James Thannickal, with OpenAI Codex assistance across development and submission preparation. Built with Strands Agents, React/Vinext, the OpenAI Sites scaffold, shadcn/Base UI, Lucide, and Zod. Third-party packages retain their own licenses.
 
 Original project work began September 4, 2026. MIT license applies to project-authored code; dependencies and model weights are governed separately.
